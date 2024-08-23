@@ -1,0 +1,12 @@
+services:
+  kdmid:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./run.py:/run.py
+      - ./model:/model
+      - /etc/timezone:/etc/timezone
+      - /etc/localtime:/etc/localtime
+    command: sh -c "python /run.py"
+    restart: unless-stopped
